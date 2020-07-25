@@ -12,3 +12,4 @@ The plugin loads automatically when an IDB is opened.
 
 Right click on any call instuction and choose 'Google Search'.
 
+![](https://raw.githubusercontent.com/AlyaGomaa/Search-API-plugin/master/_screenshot.png)
