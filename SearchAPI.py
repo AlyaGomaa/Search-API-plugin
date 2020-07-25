@@ -232,12 +232,18 @@ def google_search():
     if using_ida7api:
         current_instruction = idaapi.get_screen_ea()   #get the address at the cursor
         API= idc.print_operand(current_instruction,0)  #get the function name
-        webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN') 
+        if ' ' in API or len(API)<4 :
+            print('SearchApi: Please select a call instruction.')
+        else:
+            webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN') 
     else:
 
         current_instruction = idaapi.ScreenEA() 
         API= idc.GetOpnd(current_instruction,0)
-        webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN')
+        if ' ' in API or len(API)<4:
+            print('SearchApi: Please select a call instruction.')
+        else:
+            webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN')
 
 
     return 
