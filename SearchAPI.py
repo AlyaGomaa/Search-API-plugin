@@ -235,7 +235,10 @@ def google_search():
         if ' ' in API or len(API)<4 :
             print('SearchApi: Please select a call instruction.')
         else:
-            webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN') 
+            #in case a segment register gets copied with the API 
+            
+            API = API[ API.index(':')+1:] if ':' in API else API 
+            webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN')
     else:
 
         current_instruction = idaapi.ScreenEA() 
@@ -243,7 +246,11 @@ def google_search():
         if ' ' in API or len(API)<4:
             print('SearchApi: Please select a call instruction.')
         else:
+            API = API[ API.index(':')+1:] if ':' in API else API
             webbrowser.open_new_tab('https://www.google.com/search?q=' + API + '+MSDN')
+
+        
+            
 
 
     return 
